@@ -39,11 +39,11 @@ export default function Navbar() {
           
           {/* Logo & Name */}
           <div className="flex items-center space-x-2.5 cursor-pointer" onClick={() => setActiveTab('home')}>
-            <div className="w-10 h-10 rounded-2xl bg-gradient-to-br from-amber-100 to-emerald-100 p-1 shadow-sm border border-white/60 dark:border-white/10 flex items-center justify-center">
+            <div className="w-11 h-11 rounded-2xl bg-gradient-to-br from-emerald-500/20 via-emerald-100 to-amber-100 dark:from-emerald-900/40 dark:to-emerald-950 p-1 shadow-md border border-emerald-500/30 dark:border-emerald-400/20 flex items-center justify-center overflow-hidden group">
               <img 
-                src="/favicon.svg" 
-                alt="Uzhavan Kutty Cute Mascot" 
-                className="w-8 h-8 object-contain drop-shadow" 
+                src="/logo.png" 
+                alt="Uzhavan Thunai UT Logo" 
+                className="w-full h-full object-contain drop-shadow group-hover:scale-105 transition-transform duration-300" 
               />
             </div>
             <div>

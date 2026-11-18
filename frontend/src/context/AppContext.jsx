@@ -28,9 +28,15 @@ const TRANSLATIONS = {
 const AppContext = createContext();
 
 export function AppProvider({ children }) {
-  // Language state (Default: Tamil)
+  // Language state (Default: English)
   const [language, setLanguageState] = useState(() => {
-    return localStorage.getItem('ut_lang') || 'ta';
+    const version = localStorage.getItem('ut_lang_v');
+    if (version !== '2') {
+      localStorage.setItem('ut_lang_v', '2');
+      localStorage.setItem('ut_lang', 'en');
+      return 'en';
+    }
+    return localStorage.getItem('ut_lang') || 'en';
   });
 
   const setLanguage = (langCode) => {
