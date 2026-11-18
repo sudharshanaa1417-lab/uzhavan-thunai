@@ -1,0 +1,11 @@
+.git
+.github
+node_modules
+frontend
+ml_pipeline
+tests
+docs
+*.md
+.pytest_cache
+__pycache__
+*.pyc
