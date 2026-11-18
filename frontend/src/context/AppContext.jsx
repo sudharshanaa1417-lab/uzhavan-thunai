@@ -28,7 +28,7 @@ const TRANSLATIONS = {
 const AppContext = createContext();
 
 export function AppProvider({ children }) {
-  // Language state (Default: Tamil as specified)
+  // Language state (Default: Tamil)
   const [language, setLanguageState] = useState(() => {
     return localStorage.getItem('ut_lang') || 'ta';
   });
@@ -68,26 +68,30 @@ export function AppProvider({ children }) {
     };
   }, []);
 
-  // User Profile
+  // User Profile & Authentication State
   const [userProfile, setUserProfile] = useState(() => {
-    const saved = localStorage.getItem('ut_user');
+    const saved = localStorage.getItem('ut_user_auth');
     if (saved) {
       try { return JSON.parse(saved); } catch(e){}
     }
-    return {
-      name: "Muthuvel Karuppasamy",
-      nameTa: "முத்துவேல் கருப்பசாமி",
-      phone: "+91 98421 99014",
-      role: "farmer", // farmer | buyer | fpo | admin
-      district: "Dindigul",
-      village: "Oddanchatram South",
-      landAcres: 4.5,
-      crops: ["Tomato", "Shallots", "Paddy"],
-      livestock: ["2 Kangayam Cows", "6 Salem Black Goats", "25 Nattu Kozhi"],
-      extraEarningsTotal: 34850, // ₹ earned via Vilai/Uzhavan Thunai
+    return null; // Require login page when first opened!
+  });
+
+  const loginUser = (profileData) => {
+    const user = {
+      ...profileData,
+      id: `usr-${Date.now()}`,
+      extraEarningsTotal: 18450,
       isVerified: true
     };
-  });
+    setUserProfile(user);
+    localStorage.setItem('ut_user_auth', JSON.stringify(user));
+  };
+
+  const logoutUser = () => {
+    setUserProfile(null);
+    localStorage.removeItem('ut_user_auth');
+  };
 
   // Active Listings
   const [listings, setListings] = useState(() => {
@@ -102,10 +106,10 @@ export function AppProvider({ children }) {
     const item = {
       ...newListing,
       id: `list-${Date.now()}`,
-      sellerName: userProfile.name,
-      phone: userProfile.phone,
-      district: userProfile.district,
-      isVerifiedSeller: userProfile.isVerified,
+      sellerName: userProfile ? userProfile.name : "Farmer",
+      phone: userProfile ? userProfile.phone : "+91 94400 00000",
+      district: userProfile ? userProfile.district : "Dindigul",
+      isVerifiedSeller: true,
       bids: []
     };
     const updated = [item, ...listings];
@@ -122,7 +126,7 @@ export function AppProvider({ children }) {
       buyerName: "Koyambedu Fresh Traders",
       sellerName: "Selvaraj K.",
       totalAmount: 45600,
-      status: "held", // held | released | disputed
+      status: "held",
       createdAt: "Today 10:15 AM",
       inspectionDone: false
     }
@@ -196,6 +200,8 @@ export function AppProvider({ children }) {
         isOnline,
         userProfile,
         setUserProfile,
+        loginUser,
+        logoutUser,
         listings,
         addListing,
         escrowOrders,
