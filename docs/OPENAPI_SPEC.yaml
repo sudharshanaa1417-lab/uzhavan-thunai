@@ -1,0 +1,137 @@
+openapi: 3.0.3
+info:
+  title: Uzhavan Thunai (உழவன் துணை) API
+  description: Production-grade Agricultural & Livestock Intelligence, Mandi Forecasting, and Fair-Price Marketplace API.
+  version: 1.0.0
+servers:
+  - url: https://uzhavan-thunai-api.onrender.com
+    description: Production Server on Render
+  - url: http://localhost:8000
+    description: Local Development Server
+
+paths:
+  /api/auth/login-otp:
+    post:
+      summary: Login or Register Farmer/Buyer via Mobile OTP
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [phone, name, district]
+              properties:
+                phone: { type: string, example: "+919842199014" }
+                name: { type: string, example: "Muthuvel Karuppasamy" }
+                district: { type: string, example: "Dindigul" }
+                preferred_language: { type: string, example: "ta" }
+      responses:
+        '200':
+          description: Successfully authenticated profile
+
+  /api/listings:
+    get:
+      summary: Fetch Active Marketplace Listings
+      parameters:
+        - name: category
+          in: query
+          schema: { type: string }
+        - name: district
+          in: query
+          schema: { type: string }
+      responses:
+        '200':
+          description: List of agricultural produce and livestock listings
+    post:
+      summary: Create New Listing (with AI auto-grading)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [title, category, crop_type, quantity, unit, price_per_unit, district]
+              properties:
+                title: { type: string }
+                category: { type: string, enum: [vegetables, crops, fruits, livestock, poultry, dairy] }
+                quantity: { type: number }
+                price_per_unit: { type: number }
+      responses:
+        '200':
+          description: Created listing record
+
+  /api/advisor/recommend:
+    post:
+      summary: Smart Sell Advisor Net Profit Calculation
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [commodity_id, quantity, district]
+              properties:
+                commodity_id: { type: string, example: "tomato" }
+                quantity: { type: number, example: 1200 }
+                district: { type: string, example: "Dindigul" }
+                use_shared_pool: { type: boolean, example: true }
+      responses:
+        '200':
+          description: Highest profit market recommendation with net take-home calculation
+
+  /api/doctor/crop-scan:
+    post:
+      summary: Edge AI Crop Freshness & Rot Classifier
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                commodity: { type: string, example: "tomato" }
+      responses:
+        '200':
+          description: Grade A/B/C and Rot diagnosis
+
+  /api/doctor/animal-wound-scan:
+    post:
+      summary: AI Veterinary Livestock Wound Diagnosis
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                animal_type: { type: string, example: "goat" }
+      responses:
+        '200':
+          description: Wound severity, Traditional Nattu Vaithiyam remedies, and vet medicine
+
+  /api/marketplace/escrow/release/{order_ref}:
+    post:
+      summary: Release Escrow Deposit to Farmer UPI Account
+      parameters:
+        - name: order_ref
+          in: path
+          required: true
+          schema: { type: string }
+      responses:
+        '200':
+          description: Funds disbursed to seller UPI
+
+  /api/voice/query:
+    post:
+      summary: Multilingual Voice Assistant Natural Language Parser
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [query_text, language]
+              properties:
+                query_text: { type: string, example: "தக்காளி விலை என்ன?" }
+                language: { type: string, example: "ta" }
+      responses:
+        '200':
+          description: Localized voice response and detected intent

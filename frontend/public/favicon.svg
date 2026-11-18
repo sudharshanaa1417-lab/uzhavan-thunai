@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none">
+  <!-- Sun / Harvest Gold Background Circle -->
+  <circle cx="50" cy="50" r="46" fill="#1B5E20"/>
+  <!-- Soil Base -->
+  <path d="M18 72 C32 64, 68 64, 82 72 C74 82, 63 88, 50 88 C37 88, 26 82, 18 72 Z" fill="#6D4C41"/>
+  <path d="M24 73 C36 67, 64 67, 76 73" stroke="#8D6E63" stroke-width="2" stroke-linecap="round"/>
+  <!-- Golden Sun Rays Behind Sprout -->
+  <circle cx="50" cy="40" r="16" fill="#F2B544" opacity="0.95"/>
+  <!-- Sprout Stem -->
+  <path d="M50 70 Q50 48 50 32" stroke="#FAF6EC" stroke-width="4.5" stroke-linecap="round"/>
+  <!-- Left Leaf (Paddy grain / foliage) -->
+  <path d="M50 50 C36 46, 26 34, 32 22 C44 26, 48 38, 50 46" fill="#81C784"/>
+  <!-- Right Leaf (Cattle horn / Leaf contour) -->
+  <path d="M50 42 C64 38, 74 26, 68 14 C56 18, 52 30, 50 38" fill="#4CAF50"/>
+  <!-- Dew / Sparkle of intelligence -->
+  <circle cx="34" cy="22" r="3" fill="#FAF6EC"/>
+</svg>

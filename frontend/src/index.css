@@ -1,0 +1,63 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    font-family: 'Noto Sans Tamil', 'Noto Sans', system-ui, -apple-system, sans-serif;
+  }
+}
+
+/* Organic textured subtle pattern */
+.bg-organic-pattern {
+  background-color: #FAF6EC;
+  background-image: radial-gradient(#E2D9C5 0.75px, transparent 0.75px), radial-gradient(#E2D9C5 0.75px, #FAF6EC 0.75px);
+  background-size: 30px 30px;
+  background-position: 0 0, 15px 15px;
+}
+
+.dark .bg-organic-pattern {
+  background-color: #121A13;
+  background-image: radial-gradient(#203022 0.75px, transparent 0.75px), radial-gradient(#203022 0.75px, #121A13 0.75px);
+  background-size: 30px 30px;
+  background-position: 0 0, 15px 15px;
+}
+
+/* Custom smooth scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #A5C8A0;
+  border-radius: 9999px;
+}
+.dark ::-webkit-scrollbar-thumb {
+  background: #2A3B2E;
+}
+
+/* Animated pulse for recording & live badges */
+@keyframes softPulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.06); opacity: 0.85; }
+}
+.animate-soft-pulse {
+  animation: softPulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes wave {
+  0% { transform: rotate(0deg); }
+  20% { transform: rotate(14deg); }
+  40% { transform: rotate(-8deg); }
+  60% { transform: rotate(14deg); }
+  80% { transform: rotate(-4deg); }
+  100% { transform: rotate(0deg); }
+}
+.animate-wave {
+  animation: wave 1.8s infinite;
+  transform-origin: 70% 70%;
+  display: inline-block;
+}
