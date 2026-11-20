@@ -29,6 +29,10 @@ wheels/
 *.egg
 *.db
 *.sqlite3
+*.keras
+*.h5
+*.pth
+*.pt
 
 # Virtual environments
 venv/

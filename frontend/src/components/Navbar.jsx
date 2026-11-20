@@ -39,17 +39,18 @@ export default function Navbar() {
           
           {/* Logo & Name */}
           <div className="flex items-center space-x-2.5 cursor-pointer" onClick={() => setActiveTab('home')}>
-            <div className="w-11 h-11 rounded-2xl bg-gradient-to-br from-emerald-500/20 via-emerald-100 to-amber-100 dark:from-emerald-900/40 dark:to-emerald-950 p-1 shadow-md border border-emerald-500/30 dark:border-emerald-400/20 flex items-center justify-center overflow-hidden group">
+            <div className="w-11 h-11 rounded-full p-0.5 shadow-md bg-white dark:bg-stone-900 border-2 border-emerald-500/40 dark:border-emerald-400/40 flex items-center justify-center overflow-hidden group">
               <img 
-                src="/logo.png" 
+                src="/logo-circle.svg" 
                 alt="Uzhavan Thunai UT Logo" 
-                className="w-full h-full object-contain drop-shadow group-hover:scale-105 transition-transform duration-300" 
+                className="w-full h-full object-contain drop-shadow group-hover:scale-105 transition-transform duration-300 rounded-full" 
               />
             </div>
             <div>
               <div className="flex items-center space-x-1.5">
-                <span className="font-black text-lg text-emerald-900 dark:text-emerald-400 tracking-tight">
-                  {t('appName')}
+                <span className="font-black text-lg text-emerald-900 dark:text-emerald-400 tracking-tight flex items-center gap-1">
+                  <span>{t('appName')}</span>
+                  <span className="text-sm">🌱</span>
                 </span>
                 <span className="text-[10px] uppercase font-black px-2 py-0.5 rounded-full bg-emerald-500/15 text-emerald-800 dark:text-emerald-300 border border-emerald-400/30">
                   {userProfile ? userProfile.district : "TN"}

@@ -173,35 +173,36 @@ export default function LoginScreen() {
         {/* Brand & 3D Logo Header */}
         <div className="text-center mb-6">
           <div className="relative inline-block mx-auto mb-3">
-            <div className="w-24 h-24 sm:w-28 sm:h-28 mx-auto rounded-3xl bg-gradient-to-br from-emerald-500/15 via-white/80 to-amber-400/20 dark:from-emerald-950/40 dark:to-stone-900/80 p-2 shadow-xl border border-emerald-500/30 dark:border-emerald-400/20 flex items-center justify-center backdrop-blur-md group">
+            <div className="w-28 h-28 sm:w-32 sm:h-32 mx-auto rounded-full bg-white dark:bg-stone-900 p-1 shadow-2xl border-4 border-emerald-500/50 dark:border-emerald-400/40 flex items-center justify-center backdrop-blur-md group hover:rotate-3 transition-transform duration-300">
               <img 
-                src="/logo.png" 
-                alt="Uzhavan Thunai (UT) 3D Logo" 
-                className="w-full h-full object-contain drop-shadow-md group-hover:scale-105 transition-transform duration-300"
+                src="/logo-circle.svg" 
+                alt="Uzhavan Thunai (UT) Circular 3D Logo" 
+                className="w-full h-full object-contain rounded-full drop-shadow-md group-hover:scale-105 transition-transform duration-300"
               />
             </div>
-            <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 px-2.5 py-0.5 rounded-full bg-emerald-600 text-white text-[10px] font-black uppercase tracking-wider shadow-md">
-              UT Official
+            <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 px-3 py-0.5 rounded-full bg-gradient-to-r from-emerald-600 to-green-700 text-white text-[10px] font-black uppercase tracking-wider shadow-md border border-white/60">
+              🌾 UT Official
             </div>
           </div>
 
-          <h1 className="text-2xl sm:text-3xl font-black text-emerald-950 dark:text-emerald-300 tracking-tight">
-            Uzhavan Thunai
+          <h1 className="text-2xl sm:text-3xl font-black text-emerald-950 dark:text-emerald-300 tracking-tight flex items-center justify-center gap-1.5">
+            <span>Uzhavan Thunai</span>
+            <span className="text-2xl">🌱✨</span>
           </h1>
-          <p className="text-xs sm:text-sm text-stone-600 dark:text-stone-300 font-medium mt-1">
-            Right Time · Right Market · Right Price
+          <p className="text-xs sm:text-sm text-stone-600 dark:text-stone-300 font-semibold mt-1">
+            🌾 Welcome, Farmer Friend! Right Time · Right Market · Right Price 🚜
           </p>
 
           {/* Feature Pills */}
           <div className="flex flex-wrap justify-center gap-1.5 mt-3">
-            <span className="px-2 py-0.5 rounded-md text-[10px] font-bold bg-emerald-500/10 text-emerald-800 dark:text-emerald-300 border border-emerald-500/20">
-              📊 38 District Mandis
+            <span className="px-2.5 py-1 rounded-full text-[11px] font-bold bg-emerald-500/15 text-emerald-800 dark:text-emerald-300 border border-emerald-500/30 shadow-sm">
+              📈 38 District Mandis
             </span>
-            <span className="px-2 py-0.5 rounded-md text-[10px] font-bold bg-amber-500/10 text-amber-800 dark:text-amber-300 border border-amber-500/20">
-              🌿 AI Crop Doctor
+            <span className="px-2.5 py-1 rounded-full text-[11px] font-bold bg-amber-500/15 text-amber-800 dark:text-amber-300 border border-amber-500/30 shadow-sm">
+              🔬 AI Crop Doctor
             </span>
-            <span className="px-2 py-0.5 rounded-md text-[10px] font-bold bg-blue-500/10 text-blue-800 dark:text-blue-300 border border-blue-500/20">
-              🐐 Livestock Trading
+            <span className="px-2.5 py-1 rounded-full text-[11px] font-bold bg-blue-500/15 text-blue-800 dark:text-blue-300 border border-blue-500/30 shadow-sm">
+              🐮 Animal Clinic & Wound Care
             </span>
           </div>
         </div>
